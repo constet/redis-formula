@@ -89,7 +89,7 @@ requirepass {{ redis_settings.pass }}
 {% endif -%}
 
 {% if redis_settings.rename_command is defined %}
-{% for k, v in redis_settings.rename_command %}
+{% for k, v in redis_settings.rename_command.items() %}
 rename-command {{ k }} {{ v }}
 {% endfor %}
 {% endif -%}
@@ -119,6 +119,12 @@ slowlog-log-slower-than {{ redis_settings.slowlog_log_slower_than }}
 slowlog-max-len {{ redis_settings.slowlog_max_len }}
 
 notify-keyspace-events {{ redis_settings.notify_keyspace_events }}
+
+{%- if redis_settings.extra_opts is defined %}
+{%- for option,value in redis_settings.extra_opts.items() %}
+{{ option }} {{ value }}
+{%- endfor %}
+{%- endif %}
 
 ############################### ADVANCED CONFIG ###############################
 
