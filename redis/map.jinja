@@ -91,7 +91,7 @@
         'unixsocketperm': 755,
         'user': 'redis',
         'overcommit_memory': salt['pillar.get']('redis:lookup:overcommit_memory', default=salt['grains.filter_by']({
-            'Linux': False,
+            'Linux': True,
             'default': False
         }, grain='kernel'))
     }
