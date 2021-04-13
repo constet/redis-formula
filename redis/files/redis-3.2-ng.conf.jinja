@@ -241,7 +241,7 @@ client-output-buffer-limit {{ class }} {{ options }}
 {%- else %}
 client-output-buffer-limit normal 0 0 0
 client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
+client-output-buffer-limit pubsub 0 0 0
 {%- endif %}
 {%- if redis_settings.hz is defined %}
 hz {{ redis_settings.hz }}
